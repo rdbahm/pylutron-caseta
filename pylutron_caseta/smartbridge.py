@@ -47,7 +47,7 @@ class Smartbridge:
         ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
         ssl_context.load_verify_locations(ca_certs)
         ssl_context.load_cert_chain(certfile, keyfile)
-        ssl_context.verify_mode = ssl.CERT_REQUIRED
+        """ssl_context.verify_mode = ssl.CERT_REQUIRED"""
 
         @asyncio.coroutine
         def _connect():
