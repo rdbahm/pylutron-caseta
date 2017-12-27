@@ -318,8 +318,13 @@ class Smartbridge:
             if 'LocalZones' in device:
                 device_zone = device['LocalZones'][0]['href']
                 device_zone = device_zone[device_zone.rfind('/') + 1:]
+
+            device_name = ''
             if 'FullyQualifiedName' in device:
-                device_name = str(device['FullyQualifiedName'][0]) + ' ' + str(device['FullyQualifiedName'][1])
+                for fqn_part in device['FullyQualifiedName']:
+                    device_name += str(fqn_part)
+                    device_name += ' '
+                device_name.strip()
             else:
                 device_name = device['Name']
             device_type = device['DeviceType']
